@@ -91,7 +91,7 @@ class Auth extends StatelessWidget {
                             style: TextStyle(fontSize: 20),
                           ),
                           onPressed: () {
-                            //todo register screen
+                            Navigator.pushNamed(context, '/register');
                           },
                         )
                       ],

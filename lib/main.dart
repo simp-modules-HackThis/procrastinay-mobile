@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/login/index.dart';
+import 'screens/register/index.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     '/': (BuildContext context) => new Auth(),
-    '/register': (BuildContext context) => new Auth()
+    '/register': (BuildContext context) => new RegisterForm()
   };
 
   @override
