@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class EmailInputWidget extends StatelessWidget {
   final double topRight;
   final double bottomRight;
+  final String placeholder;
 
-  EmailInputWidget(this.topRight, this.bottomRight);
+  EmailInputWidget(this.topRight, this.bottomRight, this.placeholder);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class EmailInputWidget extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: "JohnDoe@example.com",
+                  hintText: this.placeholder,
                   hintStyle: TextStyle(color: Color(0xFFE1E1E1), fontSize: 14)),
             ),
           ),

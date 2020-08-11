@@ -1,89 +1,78 @@
 import 'package:flutter/material.dart';
+import 'package:procrastinay/util/inputWidget.dart';
+import 'package:procrastinay/util/roundedRectButton.dart';
+
+import '../background.dart';
 
 class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: new AppBar(
-          title: new Text('Create an Account'),
-        ),
+    return new Scaffold(
+        resizeToAvoidBottomPadding: false,
         backgroundColor: Theme.of(context).backgroundColor,
-        body: new Container(
-            decoration:
-                new BoxDecoration(color: Theme.of(context).backgroundColor),
-            child: Padding(
-                padding: EdgeInsets.all(10),
-                child: ListView(
-                  children: <Widget>[
-                    Container(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          'Procrastinay',
-                          style: TextStyle(
-                              color: Theme.of(context).accentColor,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 30),
-                        )),
-                    Container(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          'Register',
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Theme.of(context).accentColor),
-                        )),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: TextField(
-                        //controller: nameController,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(width: 50.0)),
-                          labelText: 'User Name',
-                        ),
-                      ),
+        body: Stack(children: <Widget>[
+          Background(),
+          Column(
+            children: <Widget>[
+              Padding(padding: EdgeInsets.only(top: 180)),
+              Center(
+                  child: Text(
+                'Procrastinay',
+                textDirection: TextDirection.ltr,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontFamily: 'Times New Roman', fontSize: 47),
+              )),
+              Padding(
+                padding: EdgeInsets.only(top: 150),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: 40, bottom: 10),
+                    child: Text(
+                      "Email",
+                      style: TextStyle(fontSize: 16, color: Color(0xFF999A9A)),
                     ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: TextField(
-                        obscureText: true,
-                        //controller: passwordController,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(width: 50.0)),
-                          labelText: 'Password',
-                        ),
-                      ),
+                  ),
+                  Stack(
+                    alignment: Alignment.bottomRight,
+                    children: <Widget>[
+                      EmailInputWidget(30.0, 0.0, 'johndoe69@gmail.com'),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: 40, bottom: 10),
+                    child: Text(
+                      "Password",
+                      style: TextStyle(fontSize: 16, color: Color(0xFF999A9A)),
                     ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: TextField(
-                        obscureText: true,
-                        //controller: passwordController,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(width: 50.0)),
-                          labelText: 'Email Address',
-                        ),
-                      ),
-                    ),
-                    Spacer(
-                      flex: 4,
-                    ),
-                    Container(
-                        height: 50,
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: RaisedButton(
-                          textColor: Colors.white,
-                          color: Theme.of(context).buttonColor,
-                          child: Text('Create'),
-                          onPressed: () {
-                            //todo login
-                          },
-                        )),
-                  ],
-                ))));
+                  ),
+                  Stack(
+                    alignment: Alignment.bottomRight,
+                    children: <Widget>[
+                      EmailInputWidget(30.0, 0.0, 'Password'),
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 30),
+              ),
+              RoundedRectButton("Create an Account", signUpGradients, false,
+                  () => Navigator.pushNamed(context, '/register')),
+            ],
+          ),
+        ]));
   }
 }
+
+const List<Color> signUpGradients = [
+  Color(0xFFFF9945),
+  Color(0xFFFc6076),
+];
