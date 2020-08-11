@@ -29,13 +29,13 @@ class MyApp extends StatelessWidget {
         backgroundColor: Color(0xffe6e1db),
         buttonColor: Color(0xff6f4e37),
         // Define the default font family.
-        fontFamily: 'Consolas',
+        fontFamily: 'Raleway',
         // Define the default TextTheme. Use this to specify the default
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
           headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
           headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Raleway'),
         ),
       ),
       /*home: MyHomePage(
@@ -84,6 +84,21 @@ class MyHomePage extends StatelessWidget {
           onPressed: null,
           child: Icon(Icons.add),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            title: Text("Guilds")
+        ),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text("Home")
+        ),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            title: Text("Profile")
+        )
+        ]
       ),
     );
   }

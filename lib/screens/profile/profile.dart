@@ -152,6 +152,7 @@ class UserProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -186,6 +187,36 @@ class UserProfilePage extends StatelessWidget {
           ),
         ],
       ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: 3,
+          items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text("Settings"),
+            backgroundColor: Colors.brown,
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline),
+              title: Text("New Task"),
+              backgroundColor: Colors.brown,
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.people),
+              title: Text("Guilds"),
+            backgroundColor: Colors.brown,
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text("Profile"),
+              backgroundColor: Colors.brown,
+          )
+        ],
+          onTap: (index){
+            print(index);
+          }
+
+        )
     );
   }
 }
