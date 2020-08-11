@@ -8,16 +8,6 @@ class Background extends StatelessWidget {
       backgroundColor: Theme.of(context).backgroundColor,
       body: Column(
         children: <Widget>[
-          new Stack(
-            alignment: Alignment.bottomCenter,
-            children: <Widget>[
-              Image.asset(
-                'assets/collaboration.png',
-                width: MediaQuery.of(context).size.width / 1.5,
-              ),
-              WavyHeader(),
-            ],
-          ),
           Expanded(
             child: Container(),
           ),

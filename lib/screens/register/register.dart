@@ -66,6 +66,7 @@ class RegisterForm extends StatelessWidget {
               ),
               RoundedRectButton("Create an Account", signUpGradients, false,
                   () => Navigator.pushNamed(context, '/register')),
+              // todo make api request
             ],
           ),
         ]));
