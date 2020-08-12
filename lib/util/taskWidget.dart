@@ -5,20 +5,19 @@ import 'user.dart';
 
 class taskWidget extends StatelessWidget{
   @override
+  Task task = new Task(1, "Finish Calc", new User("James"));
+
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
         Expanded(
-          child: Text('Deliver features faster', textAlign: TextAlign.center),
+          child: task.isComplete? Icon(Icons.check_box) : Icon(Icons.check_box_outline_blank)
         ),
         Expanded(
-          child: Text('Craft beautiful UIs', textAlign: TextAlign.center),
+          child: Text(task.name, textAlign: TextAlign.center),
         ),
         Expanded(
-          child: FittedBox(
-            fit: BoxFit.contain, // otherwise the logo will be tiny
-            child: const FlutterLogo(),
-          ),
+            child: Text(task.user.username)
         ),
       ],
     );
@@ -29,6 +28,7 @@ class Task{
   int id;
   String name;
   User user;
+  bool isComplete = true;
 
   Task(id, name, user){
     this.id = id;

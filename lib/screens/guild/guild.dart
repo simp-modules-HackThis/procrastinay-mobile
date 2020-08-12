@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:procrastinay/screens/profile/profile.dart';
+import 'package:procrastinay/util/taskWidget.dart';
 
 void main() => runApp(Guild());
 
@@ -6,14 +8,23 @@ class Guild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Layout Demo',
+      title: 'Guilds',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter Layout Demo'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.person),
+              tooltip: 'Profile',
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserProfilePage())
+                );
+              },
+          )],
         ),
-        body: Center(
-          child: Text('Hello World'),
-        ),
+        body: Container(
+          child: taskWidget(),
+        )
       ),
     );
   }

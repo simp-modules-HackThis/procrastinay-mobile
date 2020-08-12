@@ -4,6 +4,7 @@ import 'screens/login/index.dart';
 import 'screens/profile/index.dart';
 import 'screens/register/index.dart';
 import 'screens/task_manager/index.dart';
+import 'screens/guild/index.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
     '/': (BuildContext context) => new Auth(),
     '/register': (BuildContext context) => new RegisterForm(),
     '/profile': (BuildContext context) => new UserProfilePage(),
-    '/task_manager': (BuildContext context) => new TaskManager()
+    '/task_manager': (BuildContext context) => new TaskManager(),
+    '/guild': (BuildContext context) => new Guild()
   };
 
   @override
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
       /*home: MyHomePage(
         title: appName,
       ),*/
-      initialRoute: '/task_manager',
+      initialRoute: '/guild',
       routes: routes,
     );
   }
