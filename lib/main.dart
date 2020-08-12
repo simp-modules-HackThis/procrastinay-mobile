@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'screens/login/index.dart';
 import 'screens/profile/index.dart';
 import 'screens/register/index.dart';
+import 'screens/task_manager/index.dart';
 
 void main() {
   runApp(MyApp());
@@ -60,25 +61,17 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          color: Theme
-              .of(context)
-              .accentColor,
+          color: Theme.of(context).accentColor,
           child: Text(
             'Text with a background color',
-            style: Theme
-                .of(context)
-                .textTheme
-                .headline6,
+            style: Theme.of(context).textTheme.headline6,
           ),
         ),
       ),
       floatingActionButton: Theme(
         data: Theme.of(context).copyWith(
           colorScheme:
-          Theme
-              .of(context)
-              .colorScheme
-              .copyWith(secondary: Colors.yellow),
+              Theme.of(context).colorScheme.copyWith(secondary: Colors.yellow),
         ),
         child: FloatingActionButton(
           onPressed: null,
