@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     '/': (BuildContext context) => new Auth(),
     '/register': (BuildContext context) => new RegisterForm(),
-    '/profile': (BuildContext context) => new UserProfilePage()
+    '/profile': (BuildContext context) => new UserProfilePage(),
+    '/task_manager': (BuildContext context) => new TaskManager()
   };
 
   @override
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
       /*home: MyHomePage(
         title: appName,
       ),*/
-      initialRoute: '/profile',
+      initialRoute: '/task_manager',
       routes: routes,
     );
   }
