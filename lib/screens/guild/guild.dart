@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(guild());
+void main() => runApp(Guild());
 
-class guild extends StatelessWidget {
+class Guild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
