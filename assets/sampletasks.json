@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "taskId": 1,
+      "name": "Finish Profile UI",
+      "userId": "jamesw86",
+      "guildId": null,
+      "time": 60,
+      "deadline": "2020-08-14 20:00:00Z"
+    },
+    {
+      "taskId": 2,
+      "name": "Study for Calc",
+      "userId": "jamesw86",
+      "guildId": "simp-modules",
+      "time": 20,
+      "deadline": "2020-08-13 06:30:04Z"
+    }
+  ]
+}
