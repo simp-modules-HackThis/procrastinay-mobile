@@ -85,21 +85,7 @@ class MyHomePage extends StatelessWidget {
           child: Icon(Icons.add),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.people),
-            title: Text("Guilds")
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home")
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text("Profile")
-        )
-        ]
-      ),
+
     );
   }
 }
