@@ -1,9 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/login/index.dart';
 import 'screens/profile/index.dart';
 import 'screens/register/index.dart';
+import 'screens/task_manager/index.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,12 +13,13 @@ class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     '/': (BuildContext context) => new Auth(),
     '/register': (BuildContext context) => new RegisterForm(),
-    '/profile': (BuildContext context) => new UserProfilePage()
+    '/profile': (BuildContext context) => new UserProfilePage(),
+    '/task_manager': (BuildContext context) => new TaskManager()
   };
 
   @override
   Widget build(BuildContext context) {
-    final appName = 'Custom Themes';
+    final appName = 'Procrastinay';
 
     return MaterialApp(
       title: appName,
@@ -41,65 +42,8 @@ class MyApp extends StatelessWidget {
       /*home: MyHomePage(
         title: appName,
       ),*/
-      initialRoute: '/profile',
+      initialRoute: '/task_manager',
       routes: routes,
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-
-  MyHomePage({Key key, @required this.title}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Container(
-          color: Theme
-              .of(context)
-              .accentColor,
-          child: Text(
-            'Text with a background color',
-            style: Theme
-                .of(context)
-                .textTheme
-                .headline6,
-          ),
-        ),
-      ),
-      floatingActionButton: Theme(
-        data: Theme.of(context).copyWith(
-          colorScheme:
-          Theme
-              .of(context)
-              .colorScheme
-              .copyWith(secondary: Colors.yellow),
-        ),
-        child: FloatingActionButton(
-          onPressed: null,
-          child: Icon(Icons.add),
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.people),
-            title: Text("Guilds")
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home")
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text("Profile")
-        )
-        ]
-      ),
     );
   }
 }
