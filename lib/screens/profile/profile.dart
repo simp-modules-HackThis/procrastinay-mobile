@@ -44,7 +44,7 @@ class UserProfilePage extends StatelessWidget {
 
   Widget _buildFullName() {
     TextStyle _nameTextStyle = TextStyle(
-      fontFamily: 'Roboto',
+      fontFamily: 'Raleway',
       color: Colors.white,
       fontSize: 28.0,
       fontWeight: FontWeight.w700,
@@ -147,6 +147,9 @@ class UserProfilePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _buildTask(){
   }
 
   @override
