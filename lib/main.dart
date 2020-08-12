@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/login/index.dart';
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appName = 'Custom Themes';
+    final appName = 'Procrastinay';
 
     return MaterialApp(
       title: appName,
@@ -45,40 +44,6 @@ class MyApp extends StatelessWidget {
       ),*/
       initialRoute: '/task_manager',
       routes: routes,
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-
-  MyHomePage({Key key, @required this.title}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Container(
-          color: Theme.of(context).accentColor,
-          child: Text(
-            'Text with a background color',
-            style: Theme.of(context).textTheme.headline6,
-          ),
-        ),
-      ),
-      floatingActionButton: Theme(
-        data: Theme.of(context).copyWith(
-          colorScheme:
-              Theme.of(context).colorScheme.copyWith(secondary: Colors.yellow),
-        ),
-        child: FloatingActionButton(
-          onPressed: null,
-          child: Icon(Icons.add),
-        ),
-      ),
     );
   }
 }
