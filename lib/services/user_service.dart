@@ -6,6 +6,10 @@ import 'package:procrastinay/models/api_response.dart';
 import 'package:procrastinay/models/user/create_user.dart';
 import 'package:procrastinay/models/user/login_user.dart';
 import 'package:procrastinay/models/user_token.dart';
+<<<<<<< Updated upstream
+=======
+import 'package:procrastinay/models/user/create_user.dart';
+>>>>>>> Stashed changes
 
 class UserService {
   static const headers = {'Content-Type': 'application/json'};
