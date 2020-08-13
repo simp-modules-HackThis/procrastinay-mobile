@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'screens/guild/index.dart';
+import 'screens/home/index.dart';
 import 'screens/login/index.dart';
 import 'screens/profile/index.dart';
 import 'screens/register/index.dart';
 import 'screens/task_manager/index.dart';
-import 'screens/guild/index.dart';
-import 'screens/home/index.dart';
 
 void main() {
   runApp(MyApp());
