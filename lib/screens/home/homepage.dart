@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         'Event C0'
       ],
       _selectedDay.add(Duration(days: 2)): ['Event A1'],
-      _selectedDay: ['Event A2, Event B2']
+      _selectedDay: ['Event A2', 'Event B2']
     };
 
     _selectedEvents = _events[_selectedDay] ?? [];
@@ -93,8 +93,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            _buildButtons(),
-            const SizedBox(height: 8.0),
             _buildTableCalendarWithBuilders(),
             const SizedBox(height: 8.0),
             Expanded(child: _buildEventList()),
@@ -112,8 +110,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       startingDayOfWeek: StartingDayOfWeek.sunday,
       availableGestures: AvailableGestures.all,
       availableCalendarFormats: const {
-        CalendarFormat.month: '',
-        CalendarFormat.week: '',
+        CalendarFormat.month: 'Month',
+        CalendarFormat.week: 'Week',
+        CalendarFormat.twoWeeks: '2 Weeks',
       },
       calendarStyle: CalendarStyle(
         outsideDaysVisible: false,
@@ -123,8 +122,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         weekendStyle: TextStyle().copyWith(color: Colors.blue[600]),
       ),
       headerStyle: HeaderStyle(
-        centerHeaderTitle: true,
-        formatButtonVisible: false,
+        formatButtonTextStyle:
+            TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
+        formatButtonDecoration: BoxDecoration(
+          color: Colors.brown[500],
+          borderRadius: BorderRadius.circular(16.0),
+        ),
       ),
       builders: CalendarBuilders(
         selectedDayBuilder: (context, date, _) {
@@ -204,52 +207,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
         ),
       ),
-    );
-  }
-
-  // Buttons to change between calendar week/2 weeks/month
-  Widget _buildButtons() {
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            FlatButton(
-              child: Text('Month'),
-              color: Color(0xFF6F4E37),
-              textColor: Color(0xFFE6E1DB),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.month);
-                });
-              },
-            ),
-            FlatButton(
-              child: Text('2 weeks'),
-              color: Color(0xFF6F4E37),
-              textColor: Color(0xFFE6E1DB),
-              onPressed: () {
-                setState(() {
-                  _calendarController
-                      .setCalendarFormat(CalendarFormat.twoWeeks);
-                });
-              },
-            ),
-            FlatButton(
-              child: Text('Week'),
-              color: Color(0xFF6F4E37),
-              textColor: Color(0xFFE6E1DB),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.week);
-                });
-              },
-            ),
-          ],
-        ),
-        const SizedBox(height: 8.0),
-      ],
     );
   }
 
