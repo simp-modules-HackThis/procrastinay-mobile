@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import '../bottom_bar.dart';
 
 void main() => runApp(guild());
 
@@ -119,62 +120,36 @@ class guild extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        appBar: new AppBar(
-          title: new Text('                      Guild'),
-        ),
-        body: Stack(
-          children: <Widget>[
-            _buildCoverImage(screenSize, context),
-            SafeArea(
-                child: SingleChildScrollView(
-                    child: Column(children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 70),
-              ),
-              _buildGuildImage(context),
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-              ),
-              _buildGuildName(),
-              Padding(
-                padding: EdgeInsets.only(top: 10),
-              ),
-              _buildGuildMembers(context),
-              Padding(
-                padding: EdgeInsets.only(top: 25),
-              ),
-              _buildGuildButtons(context),
-            ])))
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: 3,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                title: Text("Settings"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle_outline),
-                title: Text("New Task"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.people),
-                title: Text("Guilds"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text("Profile"),
-                backgroundColor: Colors.brown,
-              )
-            ],
-            onTap: (index) {
-              print(index);
-            }));
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: new AppBar(
+        title: new Text('                      Guild'),
+      ),
+      body: Stack(
+        children: <Widget>[
+          bottomBar(),
+          _buildCoverImage(screenSize, context),
+          SafeArea(
+              child: SingleChildScrollView(
+                  child: Column(children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 70),
+            ),
+            _buildGuildImage(context),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            _buildGuildName(),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+            ),
+            _buildGuildMembers(context),
+            Padding(
+              padding: EdgeInsets.only(top: 25),
+            ),
+            _buildGuildButtons(context),
+          ])))
+        ],
+      ),
+    );
   }
 }
