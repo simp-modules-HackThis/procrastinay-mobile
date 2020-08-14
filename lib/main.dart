@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       /*home: MyHomePage(
         title: appName,
       ),*/
-      initialRoute: '/guild',
+      initialRoute: '/task_manager',
       routes: routes,
     );
   }
