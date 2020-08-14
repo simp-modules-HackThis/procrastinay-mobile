@@ -15,7 +15,7 @@ class bottomBar extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.pets),
-                title: Text("Pets"),
+                title: Text("Pet"),
                 backgroundColor: Colors.brown,
               ),
               BottomNavigationBarItem(
