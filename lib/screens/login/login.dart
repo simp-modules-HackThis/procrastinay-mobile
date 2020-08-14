@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
       sharedPreferences.setString("token", response.data.token);
       final snackBar = SnackBar(content: Text('Logged in successfully'));
       _scaffoldKey.currentState.showSnackBar(snackBar);
-      Navigator.of(context).pushReplacementNamed('/home_page');
+      Navigator.of(context).pushReplacementNamed('/welcome');
     } else {
       setState(() {
         _isLoading = false;

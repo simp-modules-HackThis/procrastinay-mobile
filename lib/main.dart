@@ -8,6 +8,7 @@ import 'screens/login/index.dart';
 import 'screens/profile/index.dart';
 import 'screens/register/index.dart';
 import 'screens/task_manager/index.dart';
+import 'screens/welcome/index.dart';
 
 void main() {
   print('started');
@@ -24,8 +25,8 @@ class MyApp extends StatelessWidget {
     '/profile': (BuildContext context) => new UserProfilePage(),
     '/task_manager': (BuildContext context) => new TaskManager(),
     '/guild': (BuildContext context) => new guild(),
-    '/home_page': (BuildContext context) => new HomePage(),
     '/game': (BuildContext context) => new Game(),
+    '/welcome': (BuildContext context) => new Welcome(),
   };
 
   @override
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
       /*home: MyHomePage(
         title: appName,
       ),*/
-//      initialRoute: '/',
+      initialRoute: '/login',
       routes: routes,
     );
   }
