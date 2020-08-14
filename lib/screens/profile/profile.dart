@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:procrastinay/screens/bottom_bar.dart';
 
-class UserProfilePage extends StatelessWidget {
+void main() {
+  runApp(UserProfilePage());
+}
+
+class UserProfilePage extends StatefulWidget {
+  @override
+  _UserProfilePageState createState() => _UserProfilePageState();
+}
+
+class _UserProfilePageState extends State<UserProfilePage> {
   //todo fetch from API
   final String _fullName = "Dick Cheney";
   final String _status = "Undergraduate Student";
@@ -157,11 +165,10 @@ class UserProfilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: new AppBar(
-        title: new Text('                     Profile'),
+        title: new Text('Profile'),
       ),
       body: Stack(
         children: <Widget>[
-          bottomBar(),
           _buildCoverImage(screenSize, context),
           SafeArea(
             child: SingleChildScrollView(

@@ -18,7 +18,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
-    '/': (BuildContext context) => new HomePage(),
+    '/homepage': (BuildContext context) => new HomePage(),
     '/login': (BuildContext context) => new LoginPage(),
     '/register': (BuildContext context) => new RegisterPage(),
     '/profile': (BuildContext context) => new UserProfilePage(),
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: appName,
+      home: MyBottomNavigationBar(),
       theme: ThemeData(
         // Define the default brightness and colors.
         primaryColor: Colors.brown,
@@ -53,11 +54,73 @@ class MyApp extends StatelessWidget {
       /*home: MyHomePage(
         title: appName,
       ),*/
-      initialRoute: '/login',
+//      initialRoute: '/',
       routes: routes,
     );
   }
 }
+
+class MyBottomNavigationBar extends StatefulWidget {
+  @override
+  _bottomNavigationBarState createState() => _bottomNavigationBarState();
+}
+
+// ignore: camel_case_types
+class _bottomNavigationBarState extends State<MyBottomNavigationBar> {
+  int _currentIndex = 0;
+  final List<Widget> _children = [
+    HomePage(),
+    Game(),
+    TaskManager(),
+    guild(),
+    UserProfilePage(),
+  ];
+
+  void onTappedBar(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: _children[_currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          onTap: onTappedBar,
+          currentIndex: _currentIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text("Home"),
+              backgroundColor: Colors.brown,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.pets),
+              title: Text("Pets"),
+              backgroundColor: Colors.brown,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline),
+              title: Text("New Task"),
+              backgroundColor: Colors.brown,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people),
+              title: Text("Guilds"),
+              backgroundColor: Colors.brown,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text("Profile"),
+              backgroundColor: Colors.brown,
+            )
+          ],
+        ));
+  }
+}
+
 /*
 class MyApp extends StatelessWidget {
   @override

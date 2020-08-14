@@ -4,8 +4,6 @@ import 'package:flutter/rendering.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import '../bottom_bar.dart';
-
 void main() {
   initializeDateFormatting().then((_) => runApp(MyApp()));
 }
@@ -87,42 +85,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return new Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: 3,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text("Home"),
-              backgroundColor: Colors.brown,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.pets),
-              title: Text("Pet"),
-              backgroundColor: Colors.brown,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_circle_outline),
-              title: Text("New Task"),
-              backgroundColor: Colors.brown,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.people),
-              title: Text("Guilds"),
-              backgroundColor: Colors.brown,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              title: Text("Profile"),
-              backgroundColor: Colors.brown,
-            )
-          ],
-          onTap: (index) {
-            print(index);
-          }),
       appBar: new AppBar(
         title: const Text(
-          '                Home Page',
+          'Home Page',
         ),
       ),
       body: Column(

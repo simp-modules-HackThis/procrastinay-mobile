@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:procrastinay/screens/bottom_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,41 +23,8 @@ class _TaskManagerState extends State<TaskManager> {
   Widget build(BuildContext context) {
     return new Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: 3,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text("Home"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.pets),
-                title: Text("Pet"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle_outline),
-                title: Text("New Task"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.people),
-                title: Text("Guilds"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text("Profile"),
-                backgroundColor: Colors.brown,
-              )
-            ],
-            onTap: (index) {
-              print(index);
-            }),
         appBar: new AppBar(
-          title: const Text('               Task Creator'),
+          title: const Text('Task Creator'),
         ),
         body: Form(
             child: Column(children: [

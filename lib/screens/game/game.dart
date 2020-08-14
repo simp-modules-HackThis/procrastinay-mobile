@@ -6,7 +6,6 @@ import 'package:zerker/zerker.dart';
 import 'dart:convert';
 import 'package:procrastinay/config.dart';
 import 'package:http/http.dart' as http;
-import 'package:procrastinay/screens/bottom_bar.dart';
 
 //wompwpwmowpm
 void main() => runApp(Game());
@@ -124,7 +123,6 @@ class Game extends StatelessWidget {
       ),
       body: Stack(
         children: <Widget>[
-          bottomBar(),
           _buildCoverImage(screenSize, context),
           SafeArea(
               child: SingleChildScrollView(

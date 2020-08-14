@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '../bottom_bar.dart';
 
 void main() => runApp(guild());
 
-class guild extends StatelessWidget {
+class guild extends StatefulWidget {
+  @override
+  _guildState createState() => _guildState();
+}
+
+class _guildState extends State<guild> {
   //todo fetch from API
   final String _guildName = "Calculus III Study Group";
   final String _guildMembers = "5 members";
@@ -122,11 +126,12 @@ class guild extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: new AppBar(
-        title: new Text('                      Guild'),
+        title: new Text(
+          'Guild',
+        ),
       ),
       body: Stack(
         children: <Widget>[
-          bottomBar(),
           _buildCoverImage(screenSize, context),
           SafeArea(
               child: SingleChildScrollView(
