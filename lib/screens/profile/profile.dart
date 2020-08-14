@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:procrastinay/screens/bottom_bar.dart';
 
 class UserProfilePage extends StatelessWidget {
   //todo fetch from API
@@ -154,70 +155,44 @@ class UserProfilePage extends StatelessWidget {
     Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        appBar: new AppBar(
-          title: new Text('                     Profile'),
-        ),
-        body: Stack(
-          children: <Widget>[
-            _buildCoverImage(screenSize, context),
-            SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    //SizedBox(height: screenSize.height / 6.4),
-                    Padding(
-                      padding: EdgeInsets.only(top: 70),
-                    ),
-                    _buildProfileImage(context),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20),
-                    ),
-                    _buildFullName(),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                    ),
-                    _buildStatus(context),
-                    Padding(
-                      padding: EdgeInsets.only(top: 25),
-                    ),
-                    _buildStatContainer(),
-                    _buildSeparator(screenSize),
-                    //_buildTodoList()
-                    //_buildButtons(),
-                  ],
-                ),
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: new AppBar(
+        title: new Text('                     Profile'),
+      ),
+      body: Stack(
+        children: <Widget>[
+          bottomBar(),
+          _buildCoverImage(screenSize, context),
+          SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  //SizedBox(height: screenSize.height / 6.4),
+                  Padding(
+                    padding: EdgeInsets.only(top: 70),
+                  ),
+                  _buildProfileImage(context),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20),
+                  ),
+                  _buildFullName(),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                  ),
+                  _buildStatus(context),
+                  Padding(
+                    padding: EdgeInsets.only(top: 25),
+                  ),
+                  _buildStatContainer(),
+                  _buildSeparator(screenSize),
+                  //_buildTodoList()
+                  //_buildButtons(),
+                ],
               ),
             ),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: 3,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                title: Text("Settings"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle_outline),
-                title: Text("New Task"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.people),
-                title: Text("Guilds"),
-                backgroundColor: Colors.brown,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text("Profile"),
-                backgroundColor: Colors.brown,
-              )
-            ],
-            onTap: (index) {
-              print(index);
-            }));
+          ),
+        ],
+      ),
+    );
   }
 }

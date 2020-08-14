@@ -1,21 +1,26 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/game/index.dart';
+import 'screens/guild/index.dart';
+import 'screens/home/index.dart';
 import 'screens/login/index.dart';
 import 'screens/profile/index.dart';
 import 'screens/register/index.dart';
 import 'screens/task_manager/index.dart';
-import 'screens/guild/index.dart';
-import 'screens/home/index.dart';
 
 void main() {
+  print('started');
   runApp(MyApp());
+  print('connectivity check');
+  Connectivity().checkConnectivity().then((value) => print(value));
 }
 
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
-    '/': (BuildContext context) => new Auth(),
-    '/register': (BuildContext context) => new RegisterForm(),
+    '/': (BuildContext context) => new HomePage(),
+    '/login': (BuildContext context) => new LoginPage(),
+    '/register': (BuildContext context) => new RegisterPage(),
     '/profile': (BuildContext context) => new UserProfilePage(),
     '/task_manager': (BuildContext context) => new TaskManager(),
     '/guild': (BuildContext context) => new guild(),
@@ -48,7 +53,7 @@ class MyApp extends StatelessWidget {
       /*home: MyHomePage(
         title: appName,
       ),*/
-      initialRoute: '/task_manager',
+      initialRoute: '/login',
       routes: routes,
     );
   }

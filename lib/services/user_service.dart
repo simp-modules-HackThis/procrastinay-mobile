@@ -11,29 +11,35 @@ import 'package:procrastinay/models/user_token.dart';
 class UserService {
   static const headers = {'Content-Type': 'application/json'};
 
-  Future<APIResponse<UserToken>> createUser(CreateUser user) {
+  static Future<APIResponse<bool>> createUser(CreateUser user) {
     return http
-        .post(Config.API_LINK + '/login',
+        .post(Config.API_LINK + '/login/',
             headers: headers, body: json.encode(user.toJson()))
         .then((data) {
       if (data.statusCode == 201) {
-        return APIResponse<UserToken>(
-            data: UserToken.fromJson(json.decode(data.body)));
+        return APIResponse<bool>(data: true);
       }
-    }).catchError((_) => APIResponse<UserToken>(
-            error: true, errorMessage: 'An error occurred'));
+    }).catchError((_) => APIResponse<bool>(
+            data: false, error: true, errorMessage: 'An error occurred'));
   }
 
-  Future<APIResponse<UserToken>> loginUser(LoginUser user) {
+  static Future<APIResponse<UserToken>> loginUser(LoginUser user) {
     return http
-        .post(Config.API_LINK + '/login',
-            headers: headers, body: json.encode(user.toJson()))
+        .post(Config.API_LINK + '/login/',
+        headers: headers, body: json.encode(user.toJson()))
         .then((data) {
       if (data.statusCode == 201) {
         return APIResponse<UserToken>(
             data: UserToken.fromJson(json.decode(data.body)));
       }
-    }).catchError((_) => APIResponse<UserToken>(
+      if (data.statusCode == 400) {
+        return APIResponse<UserToken>(
+            data: null,
+            error: true,
+            errorMessage: "Invalid Username or Password");
+      }
+    }).catchError((_) =>
+        APIResponse<UserToken>(
             error: true, errorMessage: 'An error occurred'));
   }
 }

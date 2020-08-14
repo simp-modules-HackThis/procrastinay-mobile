@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:procrastinay/util/inputWidget.dart';
 import 'package:intl/date_symbol_data_local.dart';
+
+import '../bottom_bar.dart';
 
 void main() {
   initializeDateFormatting().then((_) => runApp(MyApp()));
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     super.initState();
     final _selectedDay = DateTime.now();
 
+    //todo fetch events/tasks from API
     // some sample events
     _events = {
       _selectedDay.subtract(Duration(days: 3)): [
@@ -84,20 +86,49 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        appBar: new AppBar(
-          title: const Text(
-            '                Home Page',
-          ),
-        ),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            _buildTableCalendarWithBuilders(),
-            const SizedBox(height: 8.0),
-            Expanded(child: _buildEventList()),
+      backgroundColor: Theme.of(context).backgroundColor,
+      bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: 3,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text("Home"),
+              backgroundColor: Colors.brown,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline),
+              title: Text("New Task"),
+              backgroundColor: Colors.brown,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people),
+              title: Text("Guilds"),
+              backgroundColor: Colors.brown,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text("Profile"),
+              backgroundColor: Colors.brown,
+            )
           ],
-        ));
+          onTap: (index) {
+            print(index);
+          }),
+      appBar: new AppBar(
+        title: const Text(
+          '                Home Page',
+        ),
+      ),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          _buildTableCalendarWithBuilders(),
+          const SizedBox(height: 8.0),
+          Expanded(child: _buildEventList()),
+        ],
+      ),
+    );
   }
 
   // TableCalendar configuration
