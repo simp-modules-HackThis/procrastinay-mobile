@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() => runApp(guild());
 
 class guild extends StatelessWidget {
+  //todo fetch from API
   final String _guildName = "Calculus III Study Group";
-  final String _guildMembers = "5";
+  final String _guildMembers = "5 members";
 
   Widget _buildCoverImage(Size screenSize, BuildContext context) {
     return Container(
@@ -53,13 +56,72 @@ class guild extends StatelessWidget {
     );
   }
 
+  Widget _buildGuildMembers(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 6.0),
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+      child: Text(
+        _guildMembers,
+        style: TextStyle(
+          fontFamily: 'Spectral',
+          color: Colors.black,
+          fontSize: 20.0,
+          fontWeight: FontWeight.w300,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGuildButtons(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              RaisedButton(
+                color: Color(0xFF6F4E37),
+                textColor: Color(0xFFE6E1DB),
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, left: 40, right: 40),
+                child: Text(
+                  'Tasks',
+                  style: TextStyle(fontSize: 20),
+                ),
+                onPressed: () {
+                  //todo show the tasks in the guild
+                  null;
+                },
+              ),
+              RaisedButton(
+                color: Color(0xFF6F4E37),
+                textColor: Color(0xFFE6E1DB),
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+                child: Text(
+                  'Members',
+                  style: TextStyle(fontSize: 20),
+                ),
+                onPressed: () {
+                  //todo show the guild members
+                  null;
+                },
+              )
+            ])
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: new AppBar(
-          title: new Text('                       Guild'),
+          title: new Text('                      Guild'),
         ),
         body: Stack(
           children: <Widget>[
@@ -78,9 +140,11 @@ class guild extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 10),
               ),
+              _buildGuildMembers(context),
               Padding(
                 padding: EdgeInsets.only(top: 25),
               ),
+              _buildGuildButtons(context),
             ])))
           ],
         ),
