@@ -119,7 +119,7 @@ class Game extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: new AppBar(
-        title: new Text('                      Pet'),
+        title: new Text('Pets'),
       ),
       body: Stack(
         children: <Widget>[
@@ -138,7 +138,6 @@ class Game extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 10),
             ),
-            _buildPetButtons(context),
           ])))
         ],
       ),
