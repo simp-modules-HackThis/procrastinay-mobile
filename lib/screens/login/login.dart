@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:procrastinay/models/user/create_user.dart';
+import 'package:procrastinay/models/user/login_user.dart';
 import 'package:procrastinay/services/user_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class RegisterPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
-  static const headers = {'Content-Type': 'application/json'};
+class _LoginPageState extends State<LoginPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   bool _isLoading = false;
 
@@ -39,24 +39,29 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  register(String username, pass, email, BuildContext context) async {
-    print(username + ' ' + pass + ' ' + email);
-    CreateUser user =
-        new CreateUser(username: username, email: email, password: pass);
-    var response = await UserService.createUser(user);
-    if (response.data) {
+  signIn(String username, pass, BuildContext context) async {
+    print('signing in');
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    LoginUser user = new LoginUser(username: username, password: pass);
+    var response = await UserService.loginUser(user);
+    if (!response.error) {
       setState(() {
         _isLoading = false;
       });
-      final snackBar = SnackBar(content: Text('Registered successfully'));
+      sharedPreferences.setString("token", response.data.token);
+      final snackBar = SnackBar(content: Text('Logged in successfully'));
       _scaffoldKey.currentState.showSnackBar(snackBar);
-      Navigator.of(context).pushNamed('/login');
+      Navigator.of(context).pushReplacementNamed('/home_page');
     } else {
       setState(() {
         _isLoading = false;
       });
-      final snackBar = SnackBar(content: Text('Something went wrong!'));
+      final snackBar = SnackBar(
+          content: Text(response.errorMessage == ""
+              ? 'Something went wrong!'
+              : response.errorMessage));
       _scaffoldKey.currentState.showSnackBar(snackBar);
+      print(response.errorMessage);
     }
   }
 
@@ -75,21 +80,30 @@ class _RegisterPageState extends State<RegisterPage> {
               minWidth: 140.0,
               height: 40.0,
               child: RaisedButton(
-                onPressed: emailController.text == "" ||
-                        usernameController.text == "" ||
+                onPressed: usernameController.text == "" ||
                         passwordController.text == ""
                     ? null
                     : () {
                         setState(() {
                           _isLoading = true;
                         });
-                        print('registering');
-                        register(
-                            usernameController.text,
-                            passwordController.text,
-                            emailController.text,
+                        print('sign in button pressed');
+                        signIn(usernameController.text, passwordController.text,
                             context);
                       },
+                elevation: 0.0,
+                color: Colors.purple,
+                child: Text("Sign In", style: TextStyle(color: Colors.white70)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+              ),
+            ),
+            ButtonTheme(
+              minWidth: 140.0,
+              height: 40.0,
+              child: RaisedButton(
+                onPressed: () =>
+                    Navigator.of(context).pushReplacementNamed('/register'),
                 elevation: 0.0,
                 color: Colors.purple,
                 child:
@@ -104,7 +118,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
   final TextEditingController usernameController = new TextEditingController();
 
@@ -120,19 +133,6 @@ class _RegisterPageState extends State<RegisterPage> {
             decoration: InputDecoration(
               icon: Icon(Icons.person, color: Colors.white70),
               hintText: "Username",
-              border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white70)),
-              hintStyle: TextStyle(color: Colors.white70),
-            ),
-          ),
-          SizedBox(height: 30.0),
-          TextFormField(
-            controller: emailController,
-            cursorColor: Colors.white,
-            style: TextStyle(color: Colors.white70),
-            decoration: InputDecoration(
-              icon: Icon(Icons.email, color: Colors.white70),
-              hintText: "Email",
               border: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.white70)),
               hintStyle: TextStyle(color: Colors.white70),
@@ -172,7 +172,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(
               height: 20,
             ),
-            Text("Register",
+            Text("Login",
                 style: TextStyle(
                     color: Colors.white70,
                     fontSize: 25.0,

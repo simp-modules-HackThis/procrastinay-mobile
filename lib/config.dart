@@ -1,3 +1,3 @@
 class Config {
-  static const API_LINK = 'https://af7386562351.ngrok.io/';
+  static const API_LINK = 'http://e3b8f980c64e.ngrok.io';
 }
