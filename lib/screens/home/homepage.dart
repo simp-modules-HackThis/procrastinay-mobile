@@ -97,6 +97,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               backgroundColor: Colors.brown,
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.pets),
+              title: Text("Pet"),
+              backgroundColor: Colors.brown,
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.add_circle_outline),
               title: Text("New Task"),
               backgroundColor: Colors.brown,

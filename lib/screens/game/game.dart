@@ -7,16 +7,17 @@ import 'dart:convert';
 import 'package:procrastinay/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:procrastinay/screens/bottom_bar.dart';
+
 //wompwpwmowpm
 void main() => runApp(Game());
 
 class Game extends StatelessWidget {
-String _userCT = 'paladin';//classtype
-String _petName = 'Good Boi';
-int _points = 120;
+  String _userCT = 'paladin'; //classtype
+  String _petName = 'Good Boi';
+  int _points = 120;
 
-//every 100 points level up. 
-//every minute spent on task = 1 point 
+//every 100 points level up.
+//every minute spent on task = 1 point
 
   Future<String> requestClass() async {
     String response = (await http.get(Config.API_LINK + '/users/me',
@@ -26,8 +27,7 @@ int _points = 120;
     _userCT = response;
   }
 
-
- Widget _buildCoverImage(Size screenSize, BuildContext context) {
+  Widget _buildCoverImage(Size screenSize, BuildContext context) {
     return Container(
       height: screenSize.height / 2.4,
       decoration: BoxDecoration(
@@ -40,7 +40,7 @@ int _points = 120;
     );
   }
 
-    Widget _buildPetImage(BuildContext context) {
+  Widget _buildPetImage(BuildContext context) {
     return Center(
       child: Container(
         width: 140.0,
@@ -74,6 +74,79 @@ int _points = 120;
     );
   }
 
+  Widget _buildPetButtons(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              RaisedButton(
+                color: Color(0xFF6F4E37),
+                textColor: Color(0xFFE6E1DB),
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, left: 40, right: 40),
+                child: Text(
+                  'Tasks',
+                  style: TextStyle(fontSize: 20),
+                ),
+                onPressed: () {
+                  //todo show the tasks in the guild
+                  null;
+                },
+              ),
+              RaisedButton(
+                color: Color(0xFF6F4E37),
+                textColor: Color(0xFFE6E1DB),
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+                child: Text(
+                  'Members',
+                  style: TextStyle(fontSize: 20),
+                ),
+                onPressed: () {
+                  //todo show the guild members
+                  null;
+                },
+              )
+            ])
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: new AppBar(
+        title: new Text('                      Pet'),
+      ),
+      body: Stack(
+        children: <Widget>[
+          bottomBar(),
+          _buildCoverImage(screenSize, context),
+          SafeArea(
+              child: SingleChildScrollView(
+                  child: Column(children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 70),
+            ),
+            _buildPetImage(context),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            _buildPetName(),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+            ),
+            _buildPetButtons(context),
+          ])))
+        ],
+      ),
+    );
+  }
+}
 //////////////////////////////
 
 class MyZKApp extends ZKApp {
