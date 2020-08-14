@@ -31,8 +31,7 @@ class Game extends StatelessWidget {
 
 class MyZKApp extends ZKApp {
   ZKNode _node;
-  ZKSprite _unicorn;
-  ZKSprite _goodboy;
+  ZKSprite _classpet;
   bool _loaded = false;
   double _index = 0;
 
@@ -40,7 +39,7 @@ class MyZKApp extends ZKApp {
   init() {
     Map<String, dynamic> urls = {
       "bkg": "bkg.png",
-      "dog": {"image": "dog.png", "width": 32.0, "height": 32.0},
+      "dog": {"svg": "d.png", "width": 32.0, "height": 32.0},
       "unicorn": {"image": "unicorn.png", "width": 32.0, "height": 32.0}
     };
 
