@@ -128,28 +128,28 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           TextFormField(
             controller: usernameController,
-            cursorColor: Colors.white,
-            style: TextStyle(color: Colors.white70),
+            cursorColor: Colors.black,
+            style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
-              icon: Icon(Icons.person, color: Colors.white70),
+              icon: Icon(Icons.person, color: Colors.black),
               hintText: "Username",
               border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white70)),
-              hintStyle: TextStyle(color: Colors.white70),
+                  borderSide: BorderSide(color: Colors.black)),
+              hintStyle: TextStyle(color: Colors.black),
             ),
           ),
           SizedBox(height: 30.0),
           TextFormField(
             controller: passwordController,
-            cursorColor: Colors.white,
+            cursorColor: Colors.black,
             obscureText: true,
-            style: TextStyle(color: Colors.white70),
+            style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
-              icon: Icon(Icons.lock, color: Colors.white70),
+              icon: Icon(Icons.lock, color: Colors.black),
               hintText: "Password",
               border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white70)),
-              hintStyle: TextStyle(color: Colors.white70),
+                  borderSide: BorderSide(color: Colors.black)),
+              hintStyle: TextStyle(color: Colors.black),
             ),
           ),
         ],
