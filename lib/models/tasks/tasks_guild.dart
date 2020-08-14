@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:procrastinay/screens/guild/guild.dart';
 
 class TasksGuild {
   String taskName;
