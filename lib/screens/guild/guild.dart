@@ -14,10 +14,10 @@ class guild extends StatelessWidget {
       height: screenSize.height / 2.4,
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
-        /*image: DecorationImage(
-          image: AssetImage('assets/images/cover.jpg'),
-          fit: BoxFit.cover,
-        ),*/
+//        image: DecorationImage(
+//          image: AssetImage('assets/images/cover.jpg'),
+//          fit: BoxFit.cover,
+//        ),
       ),
     );
   }
