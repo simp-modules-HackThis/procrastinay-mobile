@@ -14,6 +14,11 @@ class bottomBar extends StatelessWidget {
                 backgroundColor: Colors.brown,
               ),
               BottomNavigationBarItem(
+                icon: Icon(Icons.pets),
+                title: Text("Pets"),
+                backgroundColor: Colors.brown,
+              ),
+              BottomNavigationBarItem(
                 icon: Icon(Icons.add_circle_outline),
                 title: Text("New Task"),
                 backgroundColor: Colors.brown,
