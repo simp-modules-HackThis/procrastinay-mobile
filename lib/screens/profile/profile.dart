@@ -150,10 +150,6 @@ class UserProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildBar() {
-    return bottomBar();
-  }
-
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -165,7 +161,7 @@ class UserProfilePage extends StatelessWidget {
       ),
       body: Stack(
         children: <Widget>[
-          _buildBar(),
+          bottomBar(),
           _buildCoverImage(screenSize, context),
           SafeArea(
             child: SingleChildScrollView(
